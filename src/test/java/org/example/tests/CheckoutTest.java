@@ -12,65 +12,65 @@ public class CheckoutTest extends BaseTest {
 
     @BeforeEach
     public void precondition() {
-        // 1. 登录
+        // 1. Login
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        assertTrue(productsPage.isOnProductsPage(), "登录应成功");
+        assertTrue(productsPage.isOnProductsPage(), "Login should be successful");
 
-        // 2. 添加商品
+        // 2. Add product
         productsPage.addProductToCart(PRODUCT_NAME);
 
-        // 3. 进入购物车并点击 Checkout
+        // 3. Go to cart and click Checkout
         page.click(".shopping_cart_link");
         CartPage cartPage = new CartPage(page);
-        assertTrue(cartPage.isOnCartPage(), "应在购物车页面");
+        assertTrue(cartPage.isOnCartPage(), "Should be on cart page");
         cartPage.clickCheckout();
     }
 
     @Test
     public void testCheckoutInformation() {
-        // 验证进入信息填写页面
+        // Verify entering the information page
         CheckoutPage checkoutPage = new CheckoutPage(page);
-        assertTrue(checkoutPage.isOnInformationPage(), "应进入信息填写页面");
-        logPass("成功跳转到信息填写页面");
+        assertTrue(checkoutPage.isOnInformationPage(), "Should enter the information page");
+        logPass("Successfully navigated to the information page");
     }
 
     @Test
     public void testCompleteCheckout() {
         CheckoutPage checkoutPage = new CheckoutPage(page);
 
-        // 填写信息
+        // Fill in information
         checkoutPage.fillInformation("John", "Doe", "12345");
         checkoutPage.clickContinue();
 
-        // 验证进入 Overview 页面
-        assertTrue(checkoutPage.isOnOverviewPage(), "应进入订单概览页面");
-        logInfo("进入订单概览页面");
+        // Verify entering the Overview page
+        assertTrue(checkoutPage.isOnOverviewPage(), "Should enter the order overview page");
+        logInfo("Entered the order overview page");
 
-        // 点击 Finish
+        // Click Finish
         checkoutPage.clickFinish();
 
-        // 验证完成页面
-        assertTrue(checkoutPage.isOnCompletePage(), "应进入完成页面");
+        // Verify the completion page
+        assertTrue(checkoutPage.isOnCompletePage(), "Should enter the completion page");
         String header = checkoutPage.getCompleteHeader();
-        assertTrue(header.contains("Thank you"), "完成标题应包含 'Thank you'");
-        logPass("结账成功！完成标题: " + header);
+        assertTrue(header.contains("Thank you"), "Completion header should contain 'Thank you'");
+        logPass("Checkout successful! Completion header: " + header);
 
-        // 点击 Back Home 回到商品列表
+        // Click Back Home to return to product list
         checkoutPage.clickBackHome();
-        assertTrue(productsPage.isOnProductsPage(), "应返回商品列表");
-        logPass("成功返回商品列表");
+        assertTrue(productsPage.isOnProductsPage(), "Should return to product list");
+        logPass("Successfully returned to product list");
     }
 
     @Test
     public void testCancelCheckout() {
         CheckoutPage checkoutPage = new CheckoutPage(page);
 
-        // 在信息页面点击 Cancel
+        // Click Cancel on the information page
         checkoutPage.clickCancel();
 
-        // 验证回到购物车页面
-        assertTrue(page.url().contains("cart.html"), "应返回购物车页面");
-        logPass("取消结账成功，返回购物车");
+        // Verify returning to the cart page
+        assertTrue(page.url().contains("cart.html"), "Should return to cart page");
+        logPass("Checkout cancelled successfully, returned to cart");
     }
 }

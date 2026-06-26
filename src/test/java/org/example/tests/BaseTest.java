@@ -3,7 +3,7 @@ package org.example.tests;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.microsoft.playwright.*;
-import org.example.pages.CartPage;     // 需要导入
+import org.example.pages.CartPage;
 import org.example.pages.LoginPage;
 import org.example.pages.ProductsPage;
 import org.example.utils.ReportManager;

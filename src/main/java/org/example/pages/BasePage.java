@@ -16,7 +16,7 @@ public class BasePage {
         this.page = page;
     }
 
-    // ===== 公共方法 =====
+    //  公共方法
 
     /**
      * 获取当前页面标题

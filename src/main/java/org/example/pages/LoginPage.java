@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
     // 打开登录页
     public void open() {
         page.navigate("https://www.saucedemo.com/");
-        logInfo("打开 SauceDemo 登录页面");
+        logInfo("Open SauceDemo login page");
     }
 
     // 输入用户名
@@ -33,7 +33,7 @@ public class LoginPage extends BasePage {
     // 点击登录按钮
     public void clickLogin() {
         page.click(loginButton);
-        logInfo("点击 Login 按钮");
+        logInfo("Click the Login button");
     }
 
     // 快速登录（一步完成）

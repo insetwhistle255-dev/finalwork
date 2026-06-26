@@ -66,7 +66,7 @@ public class CheckoutPage extends BasePage {
      */
     public void clickContinue() {
         page.click(continueButton);
-        logInfo("点击 Continue 按钮");
+        logInfo("Click the Continue button");
     }
 
     /**
@@ -74,7 +74,7 @@ public class CheckoutPage extends BasePage {
      */
     public void clickCancel() {
         page.click(cancelButton);
-        logInfo("点击 Cancel 按钮");
+        logInfo("Click the Cancel button");
     }
 
     // ===== Overview 页面操作 =====
@@ -84,7 +84,7 @@ public class CheckoutPage extends BasePage {
      */
     public void clickFinish() {
         page.click(finishButton);
-        logInfo("点击 Finish 按钮");
+        logInfo("Click the Finish button");
     }
 
     /**
@@ -122,10 +122,9 @@ public class CheckoutPage extends BasePage {
      */
     public void clickBackHome() {
         page.click(backHomeButton);
-        logInfo("点击 Back Home 按钮");
+        logInfo("Click the Back Home button");
     }
 
-    // ===== 快捷操作：一站式完成结账 =====
 
     /**
      * 快速完成结账：填写信息 -> Continue -> Finish

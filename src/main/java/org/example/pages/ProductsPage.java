@@ -38,7 +38,7 @@ public class ProductsPage extends BasePage {
         // 按钮的 data-test 属性命名规则：add-to-cart-{商品名称小写并用-连接}
         String buttonName = "add-to-cart-" + productName.toLowerCase().replace(" ", "-");
         page.click("[data-test='" + buttonName + "']");
-        logInfo("添加商品: " + productName + " 到购物车");
+        logInfo("Add product:" + productName + "To shopping cart");
     }
 
     /**

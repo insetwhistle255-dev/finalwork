@@ -14,16 +14,16 @@ public class CartTest extends BaseTest {
         // 1. 登录
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        assertTrue(productsPage.isOnProductsPage(), "登录应成功");
+        assertTrue(productsPage.isOnProductsPage(), "Login successful");
 
         // 2. 添加商品到购物车
         productsPage.addProductToCart(PRODUCT_NAME);
-        logInfo("已添加 " + PRODUCT_NAME + " 到购物车");
+        logInfo("Added " + PRODUCT_NAME + " to cart");
 
         // 3. 进入购物车页面
         // 点击购物车图标（位于页面右上角）
         page.click(".shopping_cart_link");
-        assertTrue(new CartPage(page).isOnCartPage(), "应跳转到购物车页面");
+        assertTrue(new CartPage(page).isOnCartPage(), "should navigate to the cart page");
     }
 
     @Test
@@ -32,10 +32,10 @@ public class CartTest extends BaseTest {
 
         // 验证购物车中显示添加的商品
         assertTrue(cartPage.isProductInCart(PRODUCT_NAME),
-                "购物车应包含 " + PRODUCT_NAME);
+                "The cart should contain " + PRODUCT_NAME);
         assertEquals(1, cartPage.getItemCount(),
-                "购物车中应有 1 件商品");
-        logPass("购物车正确显示已添加的商品: " + PRODUCT_NAME);
+                "There should be 1 item in the cart");
+        logPass("The cart correctly displays the added product: " + PRODUCT_NAME);
     }
 
     @Test
@@ -44,14 +44,14 @@ public class CartTest extends BaseTest {
 
         // 移除商品
         cartPage.removeProduct(PRODUCT_NAME);
-        logInfo("已移除 " + PRODUCT_NAME);
+        logInfo("Removed " + PRODUCT_NAME);
 
-        // 验证购物车为空
+// Verify cart is empty
         assertFalse(cartPage.isProductInCart(PRODUCT_NAME),
-                "购物车不应包含 " + PRODUCT_NAME);
+                "Cart should not contain " + PRODUCT_NAME);
         assertEquals(0, cartPage.getItemCount(),
-                "购物车中应无商品");
-        logPass("商品已成功从购物车移除");
+                "Cart should have no items");
+        logPass("Product successfully removed from cart");
     }
 
     @Test
@@ -61,10 +61,10 @@ public class CartTest extends BaseTest {
         // 点击 Checkout
         cartPage.clickCheckout();
 
-        // 验证跳转到结账信息页面（URL 包含 checkout-step-one）
+        // Verify navigation to checkout information page (URL contains checkout-step-one)
         assertTrue(page.url().contains("checkout-step-one"),
-                "应跳转到结账信息页面");
-        logPass("成功从购物车导航到结账页面");
+                "Should navigate to checkout information page");
+        logPass("Successfully navigated from shopping cart to checkout page");
     }
 
     @Test
@@ -76,7 +76,7 @@ public class CartTest extends BaseTest {
 
         // 验证回到商品列表页
         assertTrue(productsPage.isOnProductsPage(),
-                "应返回商品列表页面");
-        logPass("成功从购物车返回商品列表");
+                "Should return to the product list page");
+        logPass("Successfully returned to the product list from the shopping cart");
     }
 }

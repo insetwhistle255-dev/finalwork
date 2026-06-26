@@ -10,9 +10,9 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
 
-        // 验证跳转到产品页面
-        assertTrue(productsPage.isOnProductsPage(), "登录成功应显示产品页面");
-        logPass("用户 standard_user 成功登录，看到产品页面");
+        // Verify redirection to the products page
+        assertTrue(productsPage.isOnProductsPage(), "Login success should display the products page");
+        logPass("User standard_user successfully logged in and sees the products page");
     }
 
     @Test
@@ -20,10 +20,10 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login("locked_out_user", "secret_sauce");
 
-        // 预期：始终停留在登录页面，并显示错误消息
-        assertTrue(loginPage.isOnLoginPage(), "被锁用户应无法登录");
+        // Expected: always stay on the login page and display an error message
+        assertTrue(loginPage.isOnLoginPage(), "Locked-out user should not be able to log in");
         String error = loginPage.getErrorMessage();
-        assertTrue(error.contains("locked"), "错误消息应包含 'locked'");
-        logInfo("用户 locked_out_user 被锁定，登录失败");
+        assertTrue(error.contains("locked"), "Error message should contain 'locked'");
+        logInfo("User locked_out_user is locked out, login failed");
     }
 }
